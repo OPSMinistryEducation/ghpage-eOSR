@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('eOSR-blockchain app is running!');
+    expect(page.getTitleText()).toEqual('ghpage-eOSR app is running!');
   });
 
   afterEach(async () => {
