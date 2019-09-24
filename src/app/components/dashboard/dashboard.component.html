@@ -1,0 +1,94 @@
+<h1 style="width:40%;margin: 0 auto;">Admin</h1>
+
+<div id="container">
+
+	<div id="left">
+		<h2>Branches (BFS)</h2>
+
+		<pre class="tree"> {{treeString}}</pre>
+
+		<mat-expansion-panel class="mainPanel" [class.panel-selected]="curBranch=='master'">
+			<mat-expansion-panel-header>
+				<button mat-raised-button color="primary" (click)="selectBranch('master');$event.stopPropagation();"
+					style="margin-right:7em">Checkout</button>
+				<mat-panel-title [class.panel-selected]="curBranch=='master'">
+					{{ministry.name}}
+				</mat-panel-title>
+			</mat-expansion-panel-header>
+
+			<div *ngFor="let schoolboard of ministry.childEntities">
+				<mat-expansion-panel [class.panel-selected]="curBranch==schoolboard.name">
+					<mat-expansion-panel-header>
+						<button mat-raised-button color="primary"
+							(click)="selectBranch(schoolboard.name);$event.stopPropagation();"
+							style="margin-right:7em">Checkout</button>
+						<mat-panel-title [class.panel-selected]="curBranch==schoolboard.name">
+							{{schoolboard.name}}
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+
+					<div *ngFor="let school of schoolboard.childEntities">
+						<mat-expansion-panel [class.panel-selected]="curBranch==school.name">
+							<mat-expansion-panel-header>
+								<button mat-raised-button color="primary"
+									(click)="selectBranch(school.name);$event.stopPropagation();"
+									style="margin-right:7em">Checkout</button>
+								<mat-panel-title [class.panel-selected]="curBranch==school.name">
+									{{school.name}}
+								</mat-panel-title>
+							</mat-expansion-panel-header>
+
+						</mat-expansion-panel>
+					</div>
+				</mat-expansion-panel>
+			</div>
+		</mat-expansion-panel>
+
+		<div style="width: 100%; overflow: hidden;">
+			<div style="margin-left: 380px;" *ngIf="loading">
+				<h4>Processing........</h4>
+			</div>
+		</div>
+
+		<!-- <button mat-raised-button (click)="branchCreation=true" ">+ NEW Entity</button> -->
+
+
+		<mat-expansion-panel style="margin-top: 30px; width: 370px">
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					+ NEW {{childType}}
+				</mat-panel-title>
+			
+			</mat-expansion-panel-header>
+
+			<input matInput placeholder="Branch name">
+			<button (click)="newChildBranch(curBranch)">create</button>
+
+		</mat-expansion-panel>
+
+	</div>
+
+
+	<div id="right">
+		<!-- <div style="float: left; margin-top: 20px;" *ngFor="let branch of branches">
+			<button (click)="selectBranch(branch)">{{branch}}</button>
+		</div> -->
+
+		<button (click)="sendRequest()">Send request to parent entity</button>
+
+		<h2 style="margin-top: 60px">Current Branch: {{curBranch}}</h2>
+
+		<div *ngFor="let commit of commits">
+			<p>OID: {{commit.oid}}</p>
+			<p>Message: {{commit.message}}</p>
+			<p>Author: {{commit.author.name}}</p>
+
+			<button mat-raised-button (click)="acceptRequest(commit)">Accept</button>
+			<p>_</p>
+		</div>
+
+
+
+	</div>
+
+</div>
