@@ -2984,7 +2984,7 @@ class IsomorhicGitService {
         this.fs = fs;
         this.initialized = false;
         // Initialize local filesystem
-        browserfs.configure({ fs: "LocalStorage", options: {} }, function (err) {
+        browserfs.configure({ fs: "InMemory", options: {} }, function (err) {
             if (err)
                 return console.log(err);
             isomorphic_git__WEBPACK_IMPORTED_MODULE_2__["plugins"].set('fs', fs);
