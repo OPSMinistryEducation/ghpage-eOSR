@@ -2598,9 +2598,9 @@ let DashboardComponent = class DashboardComponent {
             let branch = yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["currentBranch"]({ dir: '/', fullname: false });
             console.log("Current branch:", branch);
             yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["listBranches"]({ dir: '/', remote: 'origin' }).then(x => this.branches = x);
-            yield Promise.all(this.branches.map((branch) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-                yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["checkout"]({ dir: '/', ref: branch });
-            })));
+            // await Promise.all(this.branches.map(async (branch) => {
+            // 	await git.checkout({ dir: '/', ref: branch })
+            // }))
             let sha = yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["resolveRef"]({ dir: '/', ref: branch });
             // read file hierarchy.json
             let promise = isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["readObject"]({
@@ -2984,7 +2984,7 @@ class IsomorhicGitService {
         this.fs = fs;
         this.initialized = false;
         // Initialize local filesystem
-        browserfs.configure({ fs: "InMemory", options: {} }, function (err) {
+        browserfs.configure({ fs: "LocalStorage", options: {} }, function (err) {
             if (err)
                 return console.log(err);
             isomorphic_git__WEBPACK_IMPORTED_MODULE_2__["plugins"].set('fs', fs);
