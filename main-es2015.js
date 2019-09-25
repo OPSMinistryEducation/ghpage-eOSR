@@ -2598,9 +2598,9 @@ let DashboardComponent = class DashboardComponent {
             let branch = yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["currentBranch"]({ dir: '/', fullname: false });
             console.log("Current branch:", branch);
             yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["listBranches"]({ dir: '/', remote: 'origin' }).then(x => this.branches = x);
-            // await Promise.all(this.branches.map(async (branch) => {
-            // 	await git.checkout({ dir: '/', ref: branch })
-            // }))
+            yield Promise.all(this.branches.map((branch) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+                yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["checkout"]({ dir: '/', ref: branch });
+            })));
             let sha = yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["resolveRef"]({ dir: '/', ref: branch });
             // read file hierarchy.json
             let promise = isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["readObject"]({
