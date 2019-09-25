@@ -2662,7 +2662,7 @@ let DashboardComponent = class DashboardComponent {
             let parentBranchName = properties.parent;
             console.log(parentBranchName);
             yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["checkout"]({ dir: '/', ref: parentBranchName });
-            sha = yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["commit"]({
+            yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["commit"]({
                 dir: '/',
                 author: {
                     name: this.curBranch,
@@ -2670,26 +2670,22 @@ let DashboardComponent = class DashboardComponent {
                 },
                 message: 'Request sent from ' + this.curBranch + " on " + new Date()
             });
-            let promise = isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["push"]({
+            yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["push"]({
                 dir: '/',
                 force: true,
                 remote: 'origin',
-                ref: 'master',
                 token: this.isomorphicGitService.GIT_TOKEN
             });
-            let pushResponse = yield promise;
-            console.log(pushResponse);
             // await git.checkout({ dir: '/', ref: this.curBranch })
             console.log("done");
             this.loading = false;
-            return promise;
         });
     }
     acceptRequest(commit) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             this.loading = true;
             console.log("checking out branch: ", commit.author.name);
-            let co = yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["checkout"]({ dir: '/', ref: commit.author.name });
+            yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["checkout"]({ dir: '/', ref: commit.author.name });
             yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["commit"]({
                 dir: '/',
                 author: {
@@ -2698,19 +2694,14 @@ let DashboardComponent = class DashboardComponent {
                 },
                 message: 'Request accepted by ' + this.curBranch + " => Original Rquest: " + commit.oid + " " + commit.message
             });
-            let promise = isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["push"]({
+            yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["push"]({
                 dir: '/',
                 remote: 'origin',
-                ref: this.curBranch,
                 token: this.isomorphicGitService.GIT_TOKEN,
                 force: true
             });
-            let pushResponse = yield promise;
-            console.log(pushResponse);
-            // await git.checkout({ dir: '/', ref: this.curBranch })
             console.log("done");
             this.loading = false;
-            return promise;
         });
     }
     checkout() {
