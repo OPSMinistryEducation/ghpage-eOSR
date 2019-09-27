@@ -1,0 +1,1 @@
+ng build --base-href "https://opsministryeducation.github.io/ghpage-eOSR/" && ngh --dir dist/ghpage-eOSR
