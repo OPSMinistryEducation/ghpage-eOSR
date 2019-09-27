@@ -2121,7 +2121,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1 style=\"width:40%;margin: 0 auto;\">Admin</h1>\r\n\r\n<div id=\"container\">\r\n\r\n\t<div id=\"left\">\r\n\t\t<h2>Branches (BFS)</h2>\r\n\r\n\t\t<pre class=\"tree\"> {{treeString}}</pre>\r\n\r\n\t\t<mat-expansion-panel class=\"mainPanel\" [class.panel-selected]=\"curBranch=='master'\">\r\n\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t<button mat-raised-button color=\"primary\" (click)=\"selectBranch('master');$event.stopPropagation();\"\r\n\t\t\t\t\tstyle=\"margin-right:7em\">Checkout</button>\r\n\t\t\t\t<mat-panel-title [class.panel-selected]=\"curBranch=='master'\">\r\n\t\t\t\t\t{{ministry.name}}\r\n\t\t\t\t</mat-panel-title>\r\n\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t<div *ngFor=\"let schoolboard of ministry.childEntities\">\r\n\t\t\t\t<mat-expansion-panel [class.panel-selected]=\"curBranch==schoolboard.name\">\r\n\t\t\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t\t\t<button mat-raised-button color=\"primary\"\r\n\t\t\t\t\t\t\t(click)=\"selectBranch(schoolboard.name);$event.stopPropagation();\"\r\n\t\t\t\t\t\t\tstyle=\"margin-right:7em\">Checkout</button>\r\n\t\t\t\t\t\t<mat-panel-title [class.panel-selected]=\"curBranch==schoolboard.name\">\r\n\t\t\t\t\t\t\t{{schoolboard.name}}\r\n\t\t\t\t\t\t</mat-panel-title>\r\n\t\t\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t\t\t<div *ngFor=\"let school of schoolboard.childEntities\">\r\n\t\t\t\t\t\t<mat-expansion-panel [class.panel-selected]=\"curBranch==school.name\">\r\n\t\t\t\t\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t\t\t\t\t<button mat-raised-button color=\"primary\"\r\n\t\t\t\t\t\t\t\t\t(click)=\"selectBranch(school.name);$event.stopPropagation();\"\r\n\t\t\t\t\t\t\t\t\tstyle=\"margin-right:7em\">Checkout</button>\r\n\t\t\t\t\t\t\t\t<mat-panel-title [class.panel-selected]=\"curBranch==school.name\">\r\n\t\t\t\t\t\t\t\t\t{{school.name}}\r\n\t\t\t\t\t\t\t\t</mat-panel-title>\r\n\t\t\t\t\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t\t\t\t</mat-expansion-panel>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</mat-expansion-panel>\r\n\t\t\t</div>\r\n\t\t</mat-expansion-panel>\r\n\r\n\t\t<div style=\"width: 100%; overflow: hidden;\">\r\n\t\t\t<div style=\"margin-left: 380px;\" *ngIf=\"loading\">\r\n\t\t\t\t<h4>Processing........</h4>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<!-- <button mat-raised-button (click)=\"branchCreation=true\" \">+ NEW Entity</button> -->\r\n\r\n\r\n\t\t<mat-expansion-panel style=\"margin-top: 30px; width: 370px\">\r\n\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t<mat-panel-title>\r\n\t\t\t\t\t+ NEW {{childType}}\r\n\t\t\t\t</mat-panel-title>\r\n\t\t\t\r\n\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t<div class=\"form-group\">\r\n\t\t\t\t<label for=\"name\">Name</label>\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"name\"\r\n\t\t\t\t\t   required\r\n\t\t\t\t\t   [(ngModel)]=\"childBranch\" name=\"name\">\r\n\t\t\t\t\t   \r\n\t\t\t\t<button (click)=\"newChildBranch()\">Create</button>\r\n\t\t\t\r\n\t\t\t  </div>\r\n\t\t\t\r\n\r\n\t\t</mat-expansion-panel>\r\n\r\n\t</div>\r\n\r\n\r\n\t<div id=\"right\">\r\n\t\t<!-- <div style=\"float: left; margin-top: 20px;\" *ngFor=\"let branch of branches\">\r\n\t\t\t<button (click)=\"selectBranch(branch)\">{{branch}}</button>\r\n\t\t</div> -->\r\n\r\n\t\t<button (click)=\"sendRequest()\">Send request to parent entity</button>\r\n\r\n\t\t<h2 style=\"margin-top: 60px\">Current Branch: {{curBranch}}</h2>\r\n\r\n\t\t<div *ngFor=\"let commit of commits\">\r\n\t\t\t<p>OID: {{commit.oid}}</p>\r\n\t\t\t<p>Message: {{commit.message}}</p>\r\n\t\t\t<p>Author: {{commit.author.name}}</p>\r\n\r\n\t\t\t<button mat-raised-button (click)=\"acceptRequest(commit)\">Accept</button>\r\n\t\t\t<p>_</p>\r\n\t\t</div>\r\n\r\n\r\n\r\n\t</div>\r\n\r\n</div>\r\n\r\n<!-- <form>\r\n\t<div class=\"form-group\">\r\n\t  <label for=\"name\">Name</label>\r\n\t  <input type=\"text\" class=\"form-control\" id=\"name\"\r\n\t  required\r\n\t  [(ngModel)]=\"childBranch\" name=\"name\">\r\n\t</div>\r\n\r\n\t<button type=\"submit\" class=\"btn btn-success\" (onClick)=\"getChild()\">Submit</button>\r\n\r\n  </form> -->\r\n\r\n\r\n ");
+/* harmony default export */ __webpack_exports__["default"] = ("<h1 style=\"width:40%;margin: 0 auto;\">Admin</h1>\r\n\r\n<div id=\"container\">\r\n\r\n\t<div id=\"left\">\r\n\t\t<h2>Branches</h2>\r\n\r\n\t\t<pre class=\"tree\"> {{treeString}}</pre>\r\n\r\n\t\t<mat-expansion-panel class=\"mainPanel\" [class.panel-selected]=\"curBranch=='master'\">\r\n\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t<button mat-raised-button color=\"primary\" (click)=\"selectBranch('master');$event.stopPropagation();\"\r\n\t\t\t\t\tstyle=\"margin-right:7em\">Checkout</button>\r\n\t\t\t\t<mat-panel-title [class.panel-selected]=\"curBranch=='master'\">\r\n\t\t\t\t\t{{ministry.name}}\r\n\t\t\t\t</mat-panel-title>\r\n\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t<div *ngFor=\"let schoolboard of ministry.childEntities\">\r\n\t\t\t\t<mat-expansion-panel [class.panel-selected]=\"curBranch==schoolboard.name\">\r\n\t\t\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t\t\t<button mat-raised-button color=\"primary\"\r\n\t\t\t\t\t\t\t(click)=\"selectBranch(schoolboard.name);$event.stopPropagation();\"\r\n\t\t\t\t\t\t\tstyle=\"margin-right:7em\">Checkout</button>\r\n\t\t\t\t\t\t<mat-panel-title [class.panel-selected]=\"curBranch==schoolboard.name\">\r\n\t\t\t\t\t\t\t{{schoolboard.name}}\r\n\t\t\t\t\t\t</mat-panel-title>\r\n\t\t\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t\t\t<div *ngFor=\"let school of schoolboard.childEntities\">\r\n\t\t\t\t\t\t<mat-expansion-panel [class.panel-selected]=\"curBranch==school.name\">\r\n\t\t\t\t\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t\t\t\t\t<button mat-raised-button color=\"primary\"\r\n\t\t\t\t\t\t\t\t\t(click)=\"selectBranch(school.name);$event.stopPropagation();\"\r\n\t\t\t\t\t\t\t\t\tstyle=\"margin-right:7em\">Checkout</button>\r\n\t\t\t\t\t\t\t\t<mat-panel-title [class.panel-selected]=\"curBranch==school.name\">\r\n\t\t\t\t\t\t\t\t\t{{school.name}}\r\n\t\t\t\t\t\t\t\t</mat-panel-title>\r\n\t\t\t\t\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t\t\t\t</mat-expansion-panel>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</mat-expansion-panel>\r\n\t\t\t</div>\r\n\t\t</mat-expansion-panel>\r\n\r\n\t\t<div style=\"width: 100%; overflow: hidden;\">\r\n\t\t\t<div style=\"margin-left: 380px;\" *ngIf=\"loading\">\r\n\t\t\t\t<h4>Processing........</h4>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<!-- <button mat-raised-button (click)=\"branchCreation=true\" \">+ NEW Entity</button> -->\r\n\r\n\r\n\t\t<mat-expansion-panel style=\"margin-top: 30px; width: 370px\">\r\n\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t<mat-panel-title>\r\n\t\t\t\t\t+ NEW {{childType}}\r\n\t\t\t\t</mat-panel-title>\r\n\t\t\t\r\n\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t<div class=\"form-group\">\r\n\t\t\t\t<label for=\"name\">Name</label>\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"name\"\r\n\t\t\t\t\t   required\r\n\t\t\t\t\t   [(ngModel)]=\"childBranch\" name=\"name\">\r\n\t\t\t\t\t   \r\n\t\t\t\t<button (click)=\"newChildBranch()\">Create</button>\r\n\t\t\t\r\n\t\t\t  </div>\r\n\t\t\t\r\n\r\n\t\t</mat-expansion-panel>\r\n\r\n\t</div>\r\n\r\n\r\n\t<div id=\"right\">\r\n\t\t<!-- <div style=\"float: left; margin-top: 20px;\" *ngFor=\"let branch of branches\">\r\n\t\t\t<button (click)=\"selectBranch(branch)\">{{branch}}</button>\r\n\t\t</div> -->\r\n\r\n\t\t<button (click)=\"sendRequest()\">Send request to parent entity</button>\r\n\r\n\t\t<h2 style=\"margin-top: 60px\">Current Branch: {{curBranch}}</h2>\r\n\r\n\t\t<div *ngFor=\"let commit of commits\">\r\n\t\t\t<p>OID: {{commit.oid}}</p>\r\n\t\t\t<p>Message: {{commit.message}}</p>\r\n\t\t\t<p>Author: {{commit.author.name}}</p>\r\n\r\n\t\t\t<button mat-raised-button (click)=\"acceptRequest(commit)\">Accept</button>\r\n\t\t\t<p>_</p>\r\n\t\t</div>\r\n\r\n\r\n\r\n\t</div>\r\n\r\n</div>\r\n\r\n<!-- <form>\r\n\t<div class=\"form-group\">\r\n\t  <label for=\"name\">Name</label>\r\n\t  <input type=\"text\" class=\"form-control\" id=\"name\"\r\n\t  required\r\n\t  [(ngModel)]=\"childBranch\" name=\"name\">\r\n\t</div>\r\n\r\n\t<button type=\"submit\" class=\"btn btn-success\" (onClick)=\"getChild()\">Submit</button>\r\n\r\n  </form> -->\r\n\r\n\r\n ");
 
 /***/ }),
 
@@ -2623,7 +2623,6 @@ let DashboardComponent = class DashboardComponent {
             let { object: blob } = yield promise;
             this.treeStructure = JSON.parse(blob.toString());
             console.log("set up completed");
-            // await this.isomorphicGitService.fileWriteAndCommit("test.txt", "hello", "master", true)
             this.loading = false;
         });
     }
@@ -2652,10 +2651,13 @@ let DashboardComponent = class DashboardComponent {
             // await git.checkout({ dir: '/', ref: branch })
             // checkout the master branch
             yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["checkout"]({ dir: '/', ref: this.curBranch });
-            yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["pull"]({
+            yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["fetch"]({
                 dir: '/',
+                corsProxy: 'https://cors.isomorphic-git.org',
                 ref: this.curBranch,
-                singleBranch: true
+                depth: 1,
+                singleBranch: true,
+                tags: false
             });
             this.commits = yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["log"]({ dir: '/', depth: 5, ref: this.curBranch });
             this.loading = false;
@@ -2936,6 +2938,33 @@ let EncryptionService = class EncryptionService {
     encodeUTF8(bytes) {
         return Object(tweetnacl_util__WEBPACK_IMPORTED_MODULE_2__["encodeUTF8"])(bytes);
     }
+    caesarEncrypt(text, shift) {
+        var result = "";
+        //loop through each caharacter in the text
+        for (var i = 0; i < text.length; i++) {
+            //get the character code of each letter
+            var c = text.charCodeAt(i);
+            // handle uppercase letters
+            if (c >= 65 && c <= 90) {
+                result += String.fromCharCode((c - 65 + shift) % 26 + 65);
+                // handle lowercase letters
+            }
+            else if (c >= 97 && c <= 122) {
+                result += String.fromCharCode((c - 97 + shift) % 26 + 97);
+                // its not a letter, let it through
+            }
+            else {
+                result += text.charAt(i);
+            }
+        }
+        return result;
+    }
+    ceasarDecrypt(text, shift) {
+        var result = "";
+        shift = (26 - shift) % 26;
+        result = this.caesarEncrypt(text, shift);
+        return result;
+    }
 };
 EncryptionService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Injectable"])({
@@ -2968,20 +2997,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var isomorphic_git__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! isomorphic-git */ "./node_modules/isomorphic-git/dist/for-future/isomorphic-git/index.js");
 /* harmony import */ var _isomorphic_git_lightning_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @isomorphic-git/lightning-fs */ "./node_modules/@isomorphic-git/lightning-fs/src/index.js");
 /* harmony import */ var _isomorphic_git_lightning_fs__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_isomorphic_git_lightning_fs__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _encryption_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./encryption.service */ "./src/app/services/encryption.service.ts");
 
 
 // import * as browserfs from 'browserfs';
 
 const browserfs = __webpack_require__(/*! browserfs */ "./node_modules/browserfs/dist/browserfs.js");
 
+
 const fs = new _isomorphic_git_lightning_fs__WEBPACK_IMPORTED_MODULE_3___default.a("/");
 // const fs = browserfs.BFSRequire("fs")
 let IsomorhicGitService = 
 /** IsmorphicGitService.build() to instantiate service.*/
 class IsomorhicGitService {
-    constructor() {
-        this.ENCRYPTED_TOKEN = 'MWQzMjg2ZTQzYTZmYmNlMzUyMGYyMDg3Mzc3ODRkOTQ5NWUwOTRlNQ==';
-        this.GIT_TOKEN = atob(this.ENCRYPTED_TOKEN);
+    constructor(encryptionService) {
+        this.ENCRYPTED_TOKEN = '1p3286q43m6rnoq3520r208737784p9495q094q5';
         this.REPO_URL = "https://github.com/OPSMinistryEducation/eOSR-Blockchain";
         this.CORS_PROXY = "https://cors.isomorphic-git.org";
         // /** Builder for async instantiation */
@@ -3003,6 +3033,7 @@ class IsomorhicGitService {
                 return console.log(err);
             isomorphic_git__WEBPACK_IMPORTED_MODULE_2__["plugins"].set('fs', fs);
         });
+        this.GIT_TOKEN = encryptionService.ceasarDecrypt(this.ENCRYPTED_TOKEN, 12);
     }
     build(gitToken) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
@@ -3039,6 +3070,11 @@ class IsomorhicGitService {
     fileWriteAndCommit(file, data, branch, overWrite = false) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             yield isomorphic_git__WEBPACK_IMPORTED_MODULE_2__["checkout"]({ dir: '/', ref: branch });
+            yield isomorphic_git__WEBPACK_IMPORTED_MODULE_2__["pull"]({
+                dir: '/',
+                ref: branch,
+                singleBranch: true
+            });
             if (!overWrite) {
                 yield fs.appendFile(file, data, function (err) {
                     if (err)
@@ -3142,6 +3178,9 @@ class IsomorhicGitService {
         }));
     }
 };
+IsomorhicGitService.ctorParameters = () => [
+    { type: _encryption_service__WEBPACK_IMPORTED_MODULE_4__["EncryptionService"] }
+];
 IsomorhicGitService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
         providedIn: 'root'
