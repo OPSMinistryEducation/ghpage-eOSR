@@ -1,8 +1,11 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 <h1 style="width:40%;margin: 0 auto;">Admin</h1>
 
-<div id="container">
+<div class="row">
 
-	<div id="left">
+	<div class="col-md">
 		<h2>Branches</h2>
 
 		<pre class="tree"> {{treeString}}</pre>
@@ -58,26 +61,24 @@
 				<mat-panel-title>
 					+ NEW {{childType}}
 				</mat-panel-title>
-			
+
 			</mat-expansion-panel-header>
 
 			<div class="form-group">
 				<label for="name">Name</label>
-				<input type="text" class="form-control" id="name"
-					   required
-					   [(ngModel)]="childBranch" name="name">
-					   
+				<input type="text" class="form-control" id="name" required [(ngModel)]="childBranch" name="name">
+
 				<button (click)="newChildBranch()">Create</button>
-			
-			  </div>
-			
+
+			</div>
+
 
 		</mat-expansion-panel>
 
 	</div>
 
 
-	<div id="right">
+	<div class="col-md">
 		<!-- <div style="float: left; margin-top: 20px;" *ngFor="let branch of branches">
 			<button (click)="selectBranch(branch)">{{branch}}</button>
 		</div> -->
@@ -94,9 +95,6 @@
 			<button mat-raised-button (click)="acceptRequest(commit)">Accept</button>
 			<p>_</p>
 		</div>
-
-
-
 	</div>
 
 </div>
@@ -112,6 +110,3 @@
 	<button type="submit" class="btn btn-success" (onClick)="getChild()">Submit</button>
 
   </form> -->
-
-
- 

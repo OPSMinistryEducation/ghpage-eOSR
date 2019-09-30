@@ -33,20 +33,13 @@ export class DashboardComponent implements OnInit {
 	) {
 	}
 
-	setChild(c: string) {
-		console.log(this.childBranch)
-	}
-	getChild() {
-		console.log(this.childBranch)
-	}
-
 	ngOnInit() {
 		console.log(this.childBranch)
 		this.ministry = new Ministry("Ontario Ministry of Education", this.encryptionService, this.isomorphicGitService)// Root node of Entities-node tree
 		this.setupComplete = this.setUp()
 		this.setupComplete.then(x => {
 			// breadth first search JSON object tree
-			this.treeString = this.BFS(this.treeStructure, this.ministry)[1]
+			this.treeString = this.DFS(this.treeStructure, this.ministry)[1]
 			console.log(this.ministry.childEntities)
 			console.log(this.treeString)
 		})
@@ -69,7 +62,7 @@ export class DashboardComponent implements OnInit {
 		}
 	}
 
-	private BFS(root: EntityTree, entity: Entity | undefined, output = "", indent = 0): [Entity, string] {
+	private DFS(root: EntityTree, entity: Entity | undefined, output = "", indent = 0): [Entity, string] {
 		console.log(root)
 		output = root.name
 		let node = entity
@@ -80,7 +73,7 @@ export class DashboardComponent implements OnInit {
 		if (root.children) {
 			indent += 1
 			root.children.forEach(child => {
-				let [childEntity, treeString] = this.BFS(child, undefined, output, indent)
+				let [childEntity, treeString] = this.DFS(child, undefined, output, indent)
 				node.childEntities.push(childEntity)
 				output += "\n" + "    ".repeat(indent) + " |--> " + treeString
 
@@ -122,8 +115,7 @@ export class DashboardComponent implements OnInit {
 	async selectBranch(branch: string): Promise<any> {
 		await this.setupComplete;
 		this.loading = true;
-		// set current branch
-		this.curBranch = branch
+
 
 		// if (this.branchEntityMap[branch])
 		// 	switch (this.branchEntityMap[branch][1].type) {
@@ -153,8 +145,10 @@ export class DashboardComponent implements OnInit {
 			depth: 1,
 			singleBranch: true,
 			tags: false
-		  })
-		this.commits = await git.log({ dir: '/', depth: 5, ref: this.curBranch })
+		})
+		this.commits = await git.log({ dir: '/', depth: 5, ref: branch })
+		// set current branch
+		this.curBranch = branch
 		this.loading = false
 	}
 

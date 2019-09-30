@@ -32,6 +32,7 @@ export class EncryptionService {
 		return encodeUTF8(bytes)
 	}
 
+	/**Ceasar cipher */
 	caesarEncrypt(text, shift) {
 		var result = "";
 		//loop through each caharacter in the text
