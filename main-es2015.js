@@ -2108,7 +2108,33 @@ module.exports = Array.isArray || function (arr) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-dashboard></app-dashboard>\n<router-outlet></router-outlet>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <contact-list></contact-list>\n  </div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/contact-details/contact-details.component.html":
+/*!*****************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/contact-details/contact-details.component.html ***!
+  \*****************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"contact\" class=\"row\">\n    <div class=\"col-md-12\">\n      <h2 *ngIf=\"contact._id\">Contact Details</h2>\n      <h2 *ngIf=\"!contact._id\">New Contact</h2>\n    </div>\n  </div>\n  <div *ngIf=\"contact\" class=\"row\">\n    <form class=\"col-md-12\">\n      <div class=\"form-group\">\n        <label for=\"contact-name\">Name</label>\n        <input class=\"form-control\" name=\"contact-name\" [(ngModel)]=\"contact.name\" placeholder=\"Name\"/>\n      </div>\n      <div class=\"form-group\">\n        <label for=\"contact-email\">Email</label>\n        <input class=\"form-control\" name=\"contact-email\" [(ngModel)]=\"contact.email\" placeholder=\"support@mlab.com\"/>\n      </div>\n      <div class=\"form-group\">\n        <label for=\"contact-phone-mobile\">Mobile</label>\n        <input class=\"form-control\" name=\"contact-phone-mobile\" [(ngModel)]=\"contact.phone.mobile\" placeholder=\"1234567890\"/>\n      </div>\n      <div class=\"form-group\">\n        <label for=\"contact-phone-work\">Work</label>\n        <input class=\"form-control\" name=\"contact-phone-work\" [(ngModel)]=\"contact.phone.work\" placeholder=\"0123456789\"/>\n      </div>\n      <button class=\"btn btn-primary\" *ngIf=\"!contact._id\" (click)=\"createContact(contact)\">Create</button>\n      <button class=\"btn btn-info\" *ngIf=\"contact._id\" (click)=\"updateContact(contact)\">Update</button>\n      <button class=\"btn btn-danger\" *ngIf=\"contact._id\" (click)=\"deleteContact(contact._id)\">Delete</button>\n    </form>\n  </div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/contract-list/contract-list.component.html":
+/*!*************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/contract-list/contract-list.component.html ***!
+  \*************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row\">\n    <div class=\"col-md-5\">\n      <h2>Contacts</h2>\n      <ul class=\"list-group\">\n        <li class=\"list-group-item\"\n          *ngFor=\"let contact of contacts\"\n          (click)=\"selectContact(contact)\"\n          [class.active]=\"contact === selectedContact\">\n          {{contact.name}}\n        </li>\n      </ul>\n      <button class=\"btn btn-warning\" (click)=\"createNewContact()\">New</button>\n    </div>\n    <div class=\"col-md-5 col-md-offset-2\">\n      <contact-details\n        [contact]=\"selectedContact\"\n        [createHandler]=\"addContact\"\n        [updateHandler]=\"updateContact\"\n        [deleteHandler]=\"deleteContact\">\n      </contact-details>\n    </div>\n  </div>");
 
 /***/ }),
 
@@ -2121,20 +2147,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1 style=\"width:40%;margin: 0 auto;\">Admin</h1>\r\n\r\n<div id=\"container\">\r\n\r\n\t<div id=\"left\">\r\n\t\t<h2>Branches</h2>\r\n\r\n\t\t<pre class=\"tree\"> {{treeString}}</pre>\r\n\r\n\t\t<mat-expansion-panel class=\"mainPanel\" [class.panel-selected]=\"curBranch=='master'\">\r\n\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t<button mat-raised-button color=\"primary\" (click)=\"selectBranch('master');$event.stopPropagation();\"\r\n\t\t\t\t\tstyle=\"margin-right:7em\">Checkout</button>\r\n\t\t\t\t<mat-panel-title [class.panel-selected]=\"curBranch=='master'\">\r\n\t\t\t\t\t{{ministry.name}}\r\n\t\t\t\t</mat-panel-title>\r\n\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t<div *ngFor=\"let schoolboard of ministry.childEntities\">\r\n\t\t\t\t<mat-expansion-panel [class.panel-selected]=\"curBranch==schoolboard.name\">\r\n\t\t\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t\t\t<button mat-raised-button color=\"primary\"\r\n\t\t\t\t\t\t\t(click)=\"selectBranch(schoolboard.name);$event.stopPropagation();\"\r\n\t\t\t\t\t\t\tstyle=\"margin-right:7em\">Checkout</button>\r\n\t\t\t\t\t\t<mat-panel-title [class.panel-selected]=\"curBranch==schoolboard.name\">\r\n\t\t\t\t\t\t\t{{schoolboard.name}}\r\n\t\t\t\t\t\t</mat-panel-title>\r\n\t\t\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t\t\t<div *ngFor=\"let school of schoolboard.childEntities\">\r\n\t\t\t\t\t\t<mat-expansion-panel [class.panel-selected]=\"curBranch==school.name\">\r\n\t\t\t\t\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t\t\t\t\t<button mat-raised-button color=\"primary\"\r\n\t\t\t\t\t\t\t\t\t(click)=\"selectBranch(school.name);$event.stopPropagation();\"\r\n\t\t\t\t\t\t\t\t\tstyle=\"margin-right:7em\">Checkout</button>\r\n\t\t\t\t\t\t\t\t<mat-panel-title [class.panel-selected]=\"curBranch==school.name\">\r\n\t\t\t\t\t\t\t\t\t{{school.name}}\r\n\t\t\t\t\t\t\t\t</mat-panel-title>\r\n\t\t\t\t\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t\t\t\t</mat-expansion-panel>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</mat-expansion-panel>\r\n\t\t\t</div>\r\n\t\t</mat-expansion-panel>\r\n\r\n\t\t<div style=\"width: 100%; overflow: hidden;\">\r\n\t\t\t<div style=\"margin-left: 380px;\" *ngIf=\"loading\">\r\n\t\t\t\t<h4>Processing........</h4>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<!-- <button mat-raised-button (click)=\"branchCreation=true\" \">+ NEW Entity</button> -->\r\n\r\n\r\n\t\t<mat-expansion-panel style=\"margin-top: 30px; width: 370px\">\r\n\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t<mat-panel-title>\r\n\t\t\t\t\t+ NEW {{childType}}\r\n\t\t\t\t</mat-panel-title>\r\n\t\t\t\r\n\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t<div class=\"form-group\">\r\n\t\t\t\t<label for=\"name\">Name</label>\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"name\"\r\n\t\t\t\t\t   required\r\n\t\t\t\t\t   [(ngModel)]=\"childBranch\" name=\"name\">\r\n\t\t\t\t\t   \r\n\t\t\t\t<button (click)=\"newChildBranch()\">Create</button>\r\n\t\t\t\r\n\t\t\t  </div>\r\n\t\t\t\r\n\r\n\t\t</mat-expansion-panel>\r\n\r\n\t</div>\r\n\r\n\r\n\t<div id=\"right\">\r\n\t\t<!-- <div style=\"float: left; margin-top: 20px;\" *ngFor=\"let branch of branches\">\r\n\t\t\t<button (click)=\"selectBranch(branch)\">{{branch}}</button>\r\n\t\t</div> -->\r\n\r\n\t\t<button (click)=\"sendRequest()\">Send request to parent entity</button>\r\n\r\n\t\t<h2 style=\"margin-top: 60px\">Current Branch: {{curBranch}}</h2>\r\n\r\n\t\t<div *ngFor=\"let commit of commits\">\r\n\t\t\t<p>OID: {{commit.oid}}</p>\r\n\t\t\t<p>Message: {{commit.message}}</p>\r\n\t\t\t<p>Author: {{commit.author.name}}</p>\r\n\r\n\t\t\t<button mat-raised-button (click)=\"acceptRequest(commit)\">Accept</button>\r\n\t\t\t<p>_</p>\r\n\t\t</div>\r\n\r\n\r\n\r\n\t</div>\r\n\r\n</div>\r\n\r\n<!-- <form>\r\n\t<div class=\"form-group\">\r\n\t  <label for=\"name\">Name</label>\r\n\t  <input type=\"text\" class=\"form-control\" id=\"name\"\r\n\t  required\r\n\t  [(ngModel)]=\"childBranch\" name=\"name\">\r\n\t</div>\r\n\r\n\t<button type=\"submit\" class=\"btn btn-success\" (onClick)=\"getChild()\">Submit</button>\r\n\r\n  </form> -->\r\n\r\n\r\n ");
+/* harmony default export */ __webpack_exports__["default"] = ("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n\tintegrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">\r\n\r\n<h1 style=\"width:40%;margin: 0 auto;\">Admin</h1>\r\n\r\n<div class=\"row\">\r\n\r\n\t<div class=\"col-md\">\r\n\t\t<h2>Branches</h2>\r\n\r\n\t\t<pre class=\"tree\"> {{treeString}}</pre>\r\n\r\n\t\t<mat-expansion-panel class=\"mainPanel\" [class.panel-selected]=\"curBranch=='master'\">\r\n\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t<button mat-raised-button color=\"primary\" (click)=\"selectBranch('master');$event.stopPropagation();\"\r\n\t\t\t\t\tstyle=\"margin-right:7em\">Checkout</button>\r\n\t\t\t\t<mat-panel-title [class.panel-selected]=\"curBranch=='master'\">\r\n\t\t\t\t\t{{ministry.name}}\r\n\t\t\t\t</mat-panel-title>\r\n\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t<div *ngFor=\"let schoolboard of ministry.childEntities\">\r\n\t\t\t\t<mat-expansion-panel [class.panel-selected]=\"curBranch==schoolboard.name\">\r\n\t\t\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t\t\t<button mat-raised-button color=\"primary\"\r\n\t\t\t\t\t\t\t(click)=\"selectBranch(schoolboard.name);$event.stopPropagation();\"\r\n\t\t\t\t\t\t\tstyle=\"margin-right:7em\">Checkout</button>\r\n\t\t\t\t\t\t<mat-panel-title [class.panel-selected]=\"curBranch==schoolboard.name\">\r\n\t\t\t\t\t\t\t{{schoolboard.name}}\r\n\t\t\t\t\t\t</mat-panel-title>\r\n\t\t\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t\t\t<div *ngFor=\"let school of schoolboard.childEntities\">\r\n\t\t\t\t\t\t<mat-expansion-panel [class.panel-selected]=\"curBranch==school.name\">\r\n\t\t\t\t\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t\t\t\t\t<button mat-raised-button color=\"primary\"\r\n\t\t\t\t\t\t\t\t\t(click)=\"selectBranch(school.name);$event.stopPropagation();\"\r\n\t\t\t\t\t\t\t\t\tstyle=\"margin-right:7em\">Checkout</button>\r\n\t\t\t\t\t\t\t\t<mat-panel-title [class.panel-selected]=\"curBranch==school.name\">\r\n\t\t\t\t\t\t\t\t\t{{school.name}}\r\n\t\t\t\t\t\t\t\t</mat-panel-title>\r\n\t\t\t\t\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t\t\t\t</mat-expansion-panel>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</mat-expansion-panel>\r\n\t\t\t</div>\r\n\t\t</mat-expansion-panel>\r\n\r\n\t\t<div style=\"width: 100%; overflow: hidden;\">\r\n\t\t\t<div style=\"margin-left: 380px;\" *ngIf=\"loading\">\r\n\t\t\t\t<h4>Processing........</h4>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<!-- <button mat-raised-button (click)=\"branchCreation=true\" \">+ NEW Entity</button> -->\r\n\r\n\r\n\t\t<mat-expansion-panel style=\"margin-top: 30px; width: 370px\">\r\n\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t<mat-panel-title>\r\n\t\t\t\t\t+ NEW {{childType}}\r\n\t\t\t\t</mat-panel-title>\r\n\r\n\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t<div class=\"form-group\">\r\n\t\t\t\t<label for=\"name\">Name</label>\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"name\" required [(ngModel)]=\"childBranch\" name=\"name\">\r\n\r\n\t\t\t\t<button (click)=\"newChildBranch()\">Create</button>\r\n\r\n\t\t\t</div>\r\n\r\n\r\n\t\t</mat-expansion-panel>\r\n\r\n\t</div>\r\n\r\n\r\n\t<div class=\"col-md\">\r\n\t\t<!-- <div style=\"float: left; margin-top: 20px;\" *ngFor=\"let branch of branches\">\r\n\t\t\t<button (click)=\"selectBranch(branch)\">{{branch}}</button>\r\n\t\t</div> -->\r\n\r\n\t\t<button (click)=\"sendRequest()\">Send request to parent entity</button>\r\n\r\n\t\t<h2 style=\"margin-top: 60px\">Current Branch: {{curBranch}}</h2>\r\n\r\n\t\t<div *ngFor=\"let commit of commits\">\r\n\t\t\t<p>OID: {{commit.oid}}</p>\r\n\t\t\t<p>Message: {{commit.message}}</p>\r\n\t\t\t<p>Author: {{commit.author.name}}</p>\r\n\r\n\t\t\t<button mat-raised-button (click)=\"acceptRequest(commit)\">Accept</button>\r\n\t\t\t<p>_</p>\r\n\t\t</div>\r\n\t</div>\r\n\r\n</div>\r\n\r\n<!-- <form>\r\n\t<div class=\"form-group\">\r\n\t  <label for=\"name\">Name</label>\r\n\t  <input type=\"text\" class=\"form-control\" id=\"name\"\r\n\t  required\r\n\t  [(ngModel)]=\"childBranch\" name=\"name\">\r\n\t</div>\r\n\r\n\t<button type=\"submit\" class=\"btn btn-success\" (onClick)=\"getChild()\">Submit</button>\r\n\r\n  </form> -->");
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/login/login.component.html":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/login/login.component.html ***!
-  \*********************************************************************************************/
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/login-page/login-page.component.html":
+/*!*******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/login-page/login-page.component.html ***!
+  \*******************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>login works!</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<title>Welcome to eOSR</title>\n\n<h2></h2>");
 
 /***/ }),
 
@@ -2457,12 +2483,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/dashboard/dashboard.component */ "./src/app/components/dashboard/dashboard.component.ts");
-/* harmony import */ var _components_login_login_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/login/login.component */ "./src/app/components/login/login.component.ts");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
-/* harmony import */ var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/expansion */ "./node_modules/@angular/material/esm2015/expansion.js");
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm2015/button.js");
-/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/form-field */ "./node_modules/@angular/material/esm2015/form-field.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+/* harmony import */ var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/expansion */ "./node_modules/@angular/material/esm2015/expansion.js");
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm2015/button.js");
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/form-field */ "./node_modules/@angular/material/esm2015/form-field.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _components_login_page_login_page_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/login-page/login-page.component */ "./src/app/components/login-page/login-page.component.ts");
+/* harmony import */ var _components_contract_list_contract_list_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/contract-list/contract-list.component */ "./src/app/components/contract-list/contract-list.component.ts");
+/* harmony import */ var _components_contact_details_contact_details_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/contact-details/contact-details.component */ "./src/app/components/contact-details/contact-details.component.ts");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm2015/http.js");
+
+
+
 
 
 
@@ -2482,21 +2514,206 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         declarations: [
             _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
             _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_5__["DashboardComponent"],
-            _components_login_login_component__WEBPACK_IMPORTED_MODULE_6__["LoginComponent"]
+            _components_login_page_login_page_component__WEBPACK_IMPORTED_MODULE_11__["LoginPageComponent"],
+            _components_contract_list_contract_list_component__WEBPACK_IMPORTED_MODULE_12__["ContactListComponent"],
+            _components_contact_details_contact_details_component__WEBPACK_IMPORTED_MODULE_13__["ContactDetailsComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
-            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"],
-            _angular_material_expansion__WEBPACK_IMPORTED_MODULE_8__["MatExpansionModule"],
-            _angular_material_button__WEBPACK_IMPORTED_MODULE_9__["MatButtonModule"],
-            _angular_material_form_field__WEBPACK_IMPORTED_MODULE_10__["MatFormFieldModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormsModule"]
+            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"],
+            _angular_material_expansion__WEBPACK_IMPORTED_MODULE_7__["MatExpansionModule"],
+            _angular_material_button__WEBPACK_IMPORTED_MODULE_8__["MatButtonModule"],
+            _angular_material_form_field__WEBPACK_IMPORTED_MODULE_9__["MatFormFieldModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormsModule"],
+            _angular_http__WEBPACK_IMPORTED_MODULE_14__["HttpModule"]
         ],
         providers: [],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
     })
 ], AppModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/contact-details/contact-details.component.sass":
+/*!***************************************************************************!*\
+  !*** ./src/app/components/contact-details/contact-details.component.sass ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvY29udGFjdC1kZXRhaWxzL2NvbnRhY3QtZGV0YWlscy5jb21wb25lbnQuc2FzcyJ9 */");
+
+/***/ }),
+
+/***/ "./src/app/components/contact-details/contact-details.component.ts":
+/*!*************************************************************************!*\
+  !*** ./src/app/components/contact-details/contact-details.component.ts ***!
+  \*************************************************************************/
+/*! exports provided: ContactDetailsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ContactDetailsComponent", function() { return ContactDetailsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _services_contact_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/contact.service */ "./src/app/services/contact.service.ts");
+
+
+
+let ContactDetailsComponent = class ContactDetailsComponent {
+    constructor(contactService) {
+        this.contactService = contactService;
+    }
+    createContact(contact) {
+        this.contactService.createContact(contact).then((newContact) => {
+            this.createHandler(newContact);
+        });
+    }
+    updateContact(contact) {
+        this.contactService.updateContact(contact).then((updatedContact) => {
+            this.updateHandler(updatedContact);
+        });
+    }
+    deleteContact(contactId) {
+        this.contactService.deleteContact(contactId).then((deletedContactId) => {
+            this.deleteHandler(deletedContactId);
+        });
+    }
+};
+ContactDetailsComponent.ctorParameters = () => [
+    { type: _services_contact_service__WEBPACK_IMPORTED_MODULE_2__["ContactService"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+], ContactDetailsComponent.prototype, "contact", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+], ContactDetailsComponent.prototype, "createHandler", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+], ContactDetailsComponent.prototype, "updateHandler", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+], ContactDetailsComponent.prototype, "deleteHandler", void 0);
+ContactDetailsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'contact-details',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./contact-details.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/contact-details/contact-details.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./contact-details.component.sass */ "./src/app/components/contact-details/contact-details.component.sass")).default]
+    })
+], ContactDetailsComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/contract-list/contract-list.component.sass":
+/*!***********************************************************************!*\
+  !*** ./src/app/components/contract-list/contract-list.component.sass ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvY29udHJhY3QtbGlzdC9jb250cmFjdC1saXN0LmNvbXBvbmVudC5zYXNzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/components/contract-list/contract-list.component.ts":
+/*!*********************************************************************!*\
+  !*** ./src/app/components/contract-list/contract-list.component.ts ***!
+  \*********************************************************************/
+/*! exports provided: ContactListComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ContactListComponent", function() { return ContactListComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _services_contact_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/contact.service */ "./src/app/services/contact.service.ts");
+
+
+
+let ContactListComponent = class ContactListComponent {
+    constructor(contactService) {
+        this.contactService = contactService;
+        this.getIndexOfContact = (contactId) => {
+            return this.contacts.findIndex((contact) => {
+                return contact._id === contactId;
+            });
+        };
+        this.deleteContact = (contactId) => {
+            var idx = this.getIndexOfContact(contactId);
+            if (idx !== -1) {
+                this.contacts.splice(idx, 1);
+                this.selectContact(null);
+            }
+            return this.contacts;
+        };
+        this.addContact = (contact) => {
+            this.contacts.push(contact);
+            this.selectContact(contact);
+            return this.contacts;
+        };
+        this.updateContact = (contact) => {
+            var idx = this.getIndexOfContact(contact._id);
+            if (idx !== -1) {
+                this.contacts[idx] = contact;
+                this.selectContact(contact);
+            }
+            return this.contacts;
+        };
+    }
+    ngOnInit() {
+        this.contactService
+            .getContacts()
+            .then((contacts) => {
+            this.contacts = contacts.map((contact) => {
+                if (!contact.phone) {
+                    contact.phone = {
+                        mobile: '',
+                        work: ''
+                    };
+                }
+                return contact;
+            });
+        });
+    }
+    selectContact(contact) {
+        this.selectedContact = contact;
+    }
+    createNewContact() {
+        var contact = {
+            name: '',
+            email: '',
+            phone: {
+                work: '',
+                mobile: ''
+            }
+        };
+        // By default, a newly-created contact will have the selected state.
+        this.selectContact(contact);
+    }
+};
+ContactListComponent.ctorParameters = () => [
+    { type: _services_contact_service__WEBPACK_IMPORTED_MODULE_2__["ContactService"] }
+];
+ContactListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'contact-list',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./contract-list.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/contract-list/contract-list.component.html")).default,
+        providers: [_services_contact_service__WEBPACK_IMPORTED_MODULE_2__["ContactService"]],
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./contract-list.component.sass */ "./src/app/components/contract-list/contract-list.component.sass")).default]
+    })
+], ContactListComponent);
 
 
 
@@ -2552,19 +2769,13 @@ let DashboardComponent = class DashboardComponent {
         this.childType = "schoolboard";
         this.childBranch = 'branch';
     }
-    setChild(c) {
-        console.log(this.childBranch);
-    }
-    getChild() {
-        console.log(this.childBranch);
-    }
     ngOnInit() {
         console.log(this.childBranch);
         this.ministry = new _entities_ministry__WEBPACK_IMPORTED_MODULE_5__["Ministry"]("Ontario Ministry of Education", this.encryptionService, this.isomorphicGitService); // Root node of Entities-node tree
         this.setupComplete = this.setUp();
         this.setupComplete.then(x => {
             // breadth first search JSON object tree
-            this.treeString = this.BFS(this.treeStructure, this.ministry)[1];
+            this.treeString = this.DFS(this.treeStructure, this.ministry)[1];
             console.log(this.ministry.childEntities);
             console.log(this.treeString);
         });
@@ -2585,7 +2796,7 @@ let DashboardComponent = class DashboardComponent {
                 break;
         }
     }
-    BFS(root, entity, output = "", indent = 0) {
+    DFS(root, entity, output = "", indent = 0) {
         console.log(root);
         output = root.name;
         let node = entity;
@@ -2596,7 +2807,7 @@ let DashboardComponent = class DashboardComponent {
         if (root.children) {
             indent += 1;
             root.children.forEach(child => {
-                let [childEntity, treeString] = this.BFS(child, undefined, output, indent);
+                let [childEntity, treeString] = this.DFS(child, undefined, output, indent);
                 node.childEntities.push(childEntity);
                 output += "\n" + "    ".repeat(indent) + " |--> " + treeString;
             });
@@ -2630,8 +2841,6 @@ let DashboardComponent = class DashboardComponent {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             yield this.setupComplete;
             this.loading = true;
-            // set current branch
-            this.curBranch = branch;
             // if (this.branchEntityMap[branch])
             // 	switch (this.branchEntityMap[branch][1].type) {
             // 		case "ministry":
@@ -2659,7 +2868,9 @@ let DashboardComponent = class DashboardComponent {
                 singleBranch: true,
                 tags: false
             });
-            this.commits = yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["log"]({ dir: '/', depth: 5, ref: this.curBranch });
+            this.commits = yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["log"]({ dir: '/', depth: 5, ref: branch });
+            // set current branch
+            this.curBranch = branch;
             this.loading = false;
         });
     }
@@ -2724,9 +2935,6 @@ let DashboardComponent = class DashboardComponent {
             this.loading = false;
         });
     }
-    checkout() {
-        console.log("checkout");
-    }
     newChildBranch() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             let name = this.childBranch;
@@ -2761,45 +2969,45 @@ DashboardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
-/***/ "./src/app/components/login/login.component.sass":
-/*!*******************************************************!*\
-  !*** ./src/app/components/login/login.component.sass ***!
-  \*******************************************************/
+/***/ "./src/app/components/login-page/login-page.component.sass":
+/*!*****************************************************************!*\
+  !*** ./src/app/components/login-page/login-page.component.sass ***!
+  \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbG9naW4vbG9naW4uY29tcG9uZW50LnNhc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbG9naW4tcGFnZS9sb2dpbi1wYWdlLmNvbXBvbmVudC5zYXNzIn0= */");
 
 /***/ }),
 
-/***/ "./src/app/components/login/login.component.ts":
-/*!*****************************************************!*\
-  !*** ./src/app/components/login/login.component.ts ***!
-  \*****************************************************/
-/*! exports provided: LoginComponent */
+/***/ "./src/app/components/login-page/login-page.component.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/components/login-page/login-page.component.ts ***!
+  \***************************************************************/
+/*! exports provided: LoginPageComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageComponent", function() { return LoginPageComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 
 
-let LoginComponent = class LoginComponent {
+let LoginPageComponent = class LoginPageComponent {
     constructor() { }
     ngOnInit() {
     }
 };
-LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+LoginPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-login',
-        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./login.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/login/login.component.html")).default,
-        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./login.component.sass */ "./src/app/components/login/login.component.sass")).default]
+        selector: 'app-login-page',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./login-page.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/login-page/login-page.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./login-page.component.sass */ "./src/app/components/login-page/login-page.component.sass")).default]
     })
-], LoginComponent);
+], LoginPageComponent);
 
 
 
@@ -2898,6 +3106,74 @@ class Ministry extends _Entity__WEBPACK_IMPORTED_MODULE_1__["Entity"] {
 
 /***/ }),
 
+/***/ "./src/app/services/contact.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/services/contact.service.ts ***!
+  \*********************************************/
+/*! exports provided: ContactService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ContactService", function() { return ContactService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm2015/http.js");
+
+
+
+let ContactService = class ContactService {
+    constructor(http) {
+        this.http = http;
+        this.contactsUrl = '/api/contacts';
+    }
+    // get("/api/contacts")
+    getContacts() {
+        return this.http.get(this.contactsUrl)
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.handleError);
+    }
+    // post("/api/contacts")
+    createContact(newContact) {
+        return this.http.post(this.contactsUrl, newContact)
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.handleError);
+    }
+    // get("/api/contacts/:id") endpoint not used by Angular app
+    // delete("/api/contacts/:id")
+    deleteContact(delContactId) {
+        return this.http.delete(this.contactsUrl + '/' + delContactId)
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.handleError);
+    }
+    // put("/api/contacts/:id")
+    updateContact(putContact) {
+        var putUrl = this.contactsUrl + '/' + putContact._id;
+        return this.http.put(putUrl, putContact)
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.handleError);
+    }
+    handleError(error) {
+        let errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(errMsg); // log to console instead
+    }
+};
+ContactService.ctorParameters = () => [
+    { type: _angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"] }
+];
+ContactService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
+], ContactService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/encryption.service.ts":
 /*!************************************************!*\
   !*** ./src/app/services/encryption.service.ts ***!
@@ -2938,6 +3214,7 @@ let EncryptionService = class EncryptionService {
     encodeUTF8(bytes) {
         return Object(tweetnacl_util__WEBPACK_IMPORTED_MODULE_2__["encodeUTF8"])(bytes);
     }
+    /**Ceasar cipher */
     caesarEncrypt(text, shift) {
         var result = "";
         //loop through each caharacter in the text
