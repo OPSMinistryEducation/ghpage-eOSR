@@ -2108,7 +2108,7 @@ module.exports = Array.isArray || function (arr) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <contact-list></contact-list>\n  </div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <app-login-page></app-login-page>\n  </div>");
 
 /***/ }),
 
@@ -2160,7 +2160,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<title>Welcome to eOSR</title>\n\n<h2></h2>");
+/* harmony default export */ __webpack_exports__["default"] = ("<!DOCTYPE html>\n<html  *ngIf=\"!proceed && !admin\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Credential Mangager Test</title>\n\n</head>\n\n<body style=\" margin: auto;\nmargin-top:20px;\nwidth: 24%;\nborder: 3px solid green;\npadding: 30px;\">\n\n<div>\n\n\n  <h1>Welcome to eOSR! You are:</h1>\n\n  <button mat-raised-button color=\"primary\" class=\"button\" (click)=\"selectStudent()\">Student/Parent</button>\n  <br>\n  <button mat-raised-button class=\"button\" (click)=\"admin = true\">Ministry Admin</button>\n  <br>\n  <button mat-raised-button class=\"button\">Schoolboard Admin</button>\n  <br>\n  <button mat-raised-button class=\"button\">School Admin</button>\n\n</div>\n\n  <div *ngIf=\"proceed\">\n      <div id=\"welcome-text\"></div>\n\n     <button mat-raised-button (click)=\"proceed = false\">Back</button>\n    <h1>Register</h1>\n    <button (click)=\"register()\">Sign up</button>\n\n    <h1>Login</h1>\n\n    <form id=\"login-form\" action=\"#\" onsubmit=\"event.preventDefault();\">\n      Email:<br>\n      <input [(ngModel)]=\"publicKey\" type=\"text\" id=\"email\" name=\"public key\">\n      <br>\n      Password:<br>\n      <input [(ngModel)]=\"privateKey\" type=\"password\" id=\"password\" name=\"private key\">\n      <br><br>\n      <button (click)=\"login()\">Login</button>\n    </form>\n  </div>\n\n</body>\n\n</html>\n\n<div *ngIf=\"admin\">\n  <app-dashboard></app-dashboard>\n</div>");
 
 /***/ }),
 
@@ -2491,7 +2491,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_login_page_login_page_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/login-page/login-page.component */ "./src/app/components/login-page/login-page.component.ts");
 /* harmony import */ var _components_contract_list_contract_list_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/contract-list/contract-list.component */ "./src/app/components/contract-list/contract-list.component.ts");
 /* harmony import */ var _components_contact_details_contact_details_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/contact-details/contact-details.component */ "./src/app/components/contact-details/contact-details.component.ts");
-/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm2015/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 
 
 
@@ -2526,7 +2526,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_material_button__WEBPACK_IMPORTED_MODULE_8__["MatButtonModule"],
             _angular_material_form_field__WEBPACK_IMPORTED_MODULE_9__["MatFormFieldModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormsModule"],
-            _angular_http__WEBPACK_IMPORTED_MODULE_14__["HttpModule"]
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HttpClientModule"]
         ],
         providers: [],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
@@ -2978,7 +2978,7 @@ DashboardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbG9naW4tcGFnZS9sb2dpbi1wYWdlLmNvbXBvbmVudC5zYXNzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".button {\n  margin-bottom: 18px;\n  margin-left: 30px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9sb2dpbi1wYWdlL0M6XFxERVZcXGdocGFnZS1lT1NSL3NyY1xcYXBwXFxjb21wb25lbnRzXFxsb2dpbi1wYWdlXFxsb2dpbi1wYWdlLmNvbXBvbmVudC5zYXNzIiwic3JjL2FwcC9jb21wb25lbnRzL2xvZ2luLXBhZ2UvbG9naW4tcGFnZS5jb21wb25lbnQuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLG1CQUFBO0VBQ0EsaUJBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbG9naW4tcGFnZS9sb2dpbi1wYWdlLmNvbXBvbmVudC5zYXNzIiwic291cmNlc0NvbnRlbnQiOlsiLmJ1dHRvblxyXG4gICAgbWFyZ2luLWJvdHRvbTogMThweFxyXG4gICAgbWFyZ2luLWxlZnQ6IDMwcHgiLCIuYnV0dG9uIHtcbiAgbWFyZ2luLWJvdHRvbTogMThweDtcbiAgbWFyZ2luLWxlZnQ6IDMwcHg7XG59Il19 */");
 
 /***/ }),
 
@@ -2994,13 +2994,58 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageComponent", function() { return LoginPageComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var app_services_encryption_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! app/services/encryption.service */ "./src/app/services/encryption.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+
+
 
 
 let LoginPageComponent = class LoginPageComponent {
-    constructor() { }
+    constructor(encryptionService, http) {
+        this.encryptionService = encryptionService;
+        this.http = http;
+        this.publicKey = "";
+        this.proceed = false;
+        this.admin = false;
+    }
     ngOnInit() {
+        this.send();
+    }
+    send() {
+        this.http.post('http://localhost:3000/api/message', "hello").toPromise();
+    }
+    selectStudent() {
+        this.proceed = true;
+    }
+    register() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const keys = this.encryptionService.generateKeys();
+            this.show(`New public key credential generated: <br> ${keys.publicKey} <br>    private key: ${keys.secretKey}`);
+            // navigator.credentials.store({id: "mock", type: "test"})
+            // navigator.credentials()
+            // console.log(cred.id)
+        });
+    }
+    // const login = async () => {
+    //   const cred = await navigator.credentials.get({ password: true })
+    //   if (!cred) {
+    //     return show('No credentials in store.')
+    //   }
+    //   console.log(cred)
+    //   show(`You are now logged in as ${cred.id}.`)
+    // }
+    login() {
+        console.log(this.publicKey);
+        console.log();
+    }
+    show(msg) {
+        document.getElementById('welcome-text').innerHTML = msg;
     }
 };
+LoginPageComponent.ctorParameters = () => [
+    { type: app_services_encryption_service__WEBPACK_IMPORTED_MODULE_2__["EncryptionService"] },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }
+];
 LoginPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-login-page',
