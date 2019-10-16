@@ -2108,7 +2108,7 @@ module.exports = Array.isArray || function (arr) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-dashboard></app-dashboard>\n<router-outlet></router-outlet>");
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- <div class=\"container\"> -->\n    <app-dashboard></app-dashboard>\n  <!-- </div> -->");
 
 /***/ }),
 
@@ -2122,6 +2122,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n\tintegrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">\r\n\r\n<h1 style=\"width:40%;margin: 0 auto;\">Admin</h1>\r\n\r\n<div class=\"row\">\r\n\r\n\t<div class=\"col-md\">\r\n\t\t<h2>Branches</h2>\r\n\r\n\t\t<pre class=\"tree\"> {{treeString}}</pre>\r\n\r\n\t\t<mat-expansion-panel class=\"mainPanel\" [class.panel-selected]=\"curBranch=='master'\">\r\n\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t<button mat-raised-button color=\"primary\" (click)=\"selectBranch('master');$event.stopPropagation();\"\r\n\t\t\t\t\tstyle=\"margin-right:7em\">Checkout</button>\r\n\t\t\t\t<mat-panel-title [class.panel-selected]=\"curBranch=='master'\">\r\n\t\t\t\t\t{{ministry.name}}\r\n\t\t\t\t</mat-panel-title>\r\n\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t<div *ngFor=\"let schoolboard of ministry.childEntities\">\r\n\t\t\t\t<mat-expansion-panel [class.panel-selected]=\"curBranch==schoolboard.name\">\r\n\t\t\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t\t\t<button mat-raised-button color=\"primary\"\r\n\t\t\t\t\t\t\t(click)=\"selectBranch(schoolboard.name);$event.stopPropagation();\"\r\n\t\t\t\t\t\t\tstyle=\"margin-right:7em\">Checkout</button>\r\n\t\t\t\t\t\t<mat-panel-title [class.panel-selected]=\"curBranch==schoolboard.name\">\r\n\t\t\t\t\t\t\t{{schoolboard.name}}\r\n\t\t\t\t\t\t</mat-panel-title>\r\n\t\t\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t\t\t<div *ngFor=\"let school of schoolboard.childEntities\">\r\n\t\t\t\t\t\t<mat-expansion-panel [class.panel-selected]=\"curBranch==school.name\">\r\n\t\t\t\t\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t\t\t\t\t<button mat-raised-button color=\"primary\"\r\n\t\t\t\t\t\t\t\t\t(click)=\"selectBranch(school.name);$event.stopPropagation();\"\r\n\t\t\t\t\t\t\t\t\tstyle=\"margin-right:7em\">Checkout</button>\r\n\t\t\t\t\t\t\t\t<mat-panel-title [class.panel-selected]=\"curBranch==school.name\">\r\n\t\t\t\t\t\t\t\t\t{{school.name}}\r\n\t\t\t\t\t\t\t\t</mat-panel-title>\r\n\t\t\t\t\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t\t\t\t</mat-expansion-panel>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</mat-expansion-panel>\r\n\t\t\t</div>\r\n\t\t</mat-expansion-panel>\r\n\r\n\t\t<div style=\"width: 100%; overflow: hidden;\">\r\n\t\t\t<div style=\"margin-left: 380px;\" *ngIf=\"loading\">\r\n\t\t\t\t<h4>Processing........</h4>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<!-- <button mat-raised-button (click)=\"branchCreation=true\" \">+ NEW Entity</button> -->\r\n\r\n\r\n\t\t<mat-expansion-panel style=\"margin-top: 30px; width: 370px\">\r\n\t\t\t<mat-expansion-panel-header>\r\n\t\t\t\t<mat-panel-title>\r\n\t\t\t\t\t+ NEW {{childType}}\r\n\t\t\t\t</mat-panel-title>\r\n\r\n\t\t\t</mat-expansion-panel-header>\r\n\r\n\t\t\t<div class=\"form-group\">\r\n\t\t\t\t<label for=\"name\">Name</label>\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"name\" required [(ngModel)]=\"childBranch\" name=\"name\">\r\n\r\n\t\t\t\t<button (click)=\"newChildBranch()\">Create</button>\r\n\r\n\t\t\t</div>\r\n\r\n\r\n\t\t</mat-expansion-panel>\r\n\r\n\t</div>\r\n\r\n\r\n\t<div class=\"col-md\">\r\n\t\t<!-- <div style=\"float: left; margin-top: 20px;\" *ngFor=\"let branch of branches\">\r\n\t\t\t<button (click)=\"selectBranch(branch)\">{{branch}}</button>\r\n\t\t</div> -->\r\n\r\n\t\t<button (click)=\"sendRequest()\">Send request to parent entity</button>\r\n\r\n\t\t<h2 style=\"margin-top: 60px\">Current Branch: {{curBranch}}</h2>\r\n\r\n\t\t<div *ngFor=\"let commit of commits\">\r\n\t\t\t<p>OID: {{commit.oid}}</p>\r\n\t\t\t<p>Message: {{commit.message}}</p>\r\n\t\t\t<p>Author: {{commit.author.name}}</p>\r\n\r\n\t\t\t<button mat-raised-button (click)=\"acceptRequest(commit)\">Accept</button>\r\n\t\t\t<p>_</p>\r\n\t\t</div>\r\n\t</div>\r\n\r\n</div>\r\n\r\n<!-- <form>\r\n\t<div class=\"form-group\">\r\n\t  <label for=\"name\">Name</label>\r\n\t  <input type=\"text\" class=\"form-control\" id=\"name\"\r\n\t  required\r\n\t  [(ngModel)]=\"childBranch\" name=\"name\">\r\n\t</div>\r\n\r\n\t<button type=\"submit\" class=\"btn btn-success\" (onClick)=\"getChild()\">Submit</button>\r\n\r\n  </form> -->");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/login-page/login-page.component.html":
+/*!*******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/login-page/login-page.component.html ***!
+  \*******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<!DOCTYPE html>\n<html  *ngIf=\"!proceed && !admin\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Credential Mangager Test</title>\n\n</head>\n\n<body style=\" margin: auto;\nmargin-top:20px;\nwidth: 24%;\nborder: 3px solid green;\npadding: 30px;\">\n\n<div>\n\n\n  <h1>Welcome to eOSR! You are:</h1>\n\n  <button mat-raised-button color=\"primary\" class=\"button\" (click)=\"selectStudent()\">Student/Parent</button>\n  <br>\n  <button mat-raised-button class=\"button\" (click)=\"admin = true\">Ministry Admin</button>\n  <br>\n  <button mat-raised-button class=\"button\">Schoolboard Admin</button>\n  <br>\n  <button mat-raised-button class=\"button\">School Admin</button>\n\n</div>\n\n  <div *ngIf=\"proceed\">\n      <div id=\"welcome-text\"></div>\n\n     <button mat-raised-button (click)=\"proceed = false\">Back</button>\n    <h1>Register</h1>\n    <button (click)=\"register()\">Sign up</button>\n\n    <h1>Login</h1>\n\n    <form id=\"login-form\" action=\"#\" onsubmit=\"event.preventDefault();\">\n      Email:<br>\n      <input [(ngModel)]=\"publicKey\" type=\"text\" id=\"email\" name=\"public key\">\n      <br>\n      Password:<br>\n      <input [(ngModel)]=\"privateKey\" type=\"password\" id=\"password\" name=\"private key\">\n      <br><br>\n      <button (click)=\"login()\">Login</button>\n    </form>\n  </div>\n\n</body>\n\n</html>\n\n<div *ngIf=\"admin\">\n  <app-dashboard></app-dashboard>\n</div>");
 
 /***/ }),
 
@@ -2449,6 +2462,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm2015/button.js");
 /* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/form-field */ "./node_modules/@angular/material/esm2015/form-field.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _components_login_page_login_page_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/login-page/login-page.component */ "./src/app/components/login-page/login-page.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+
+
 
 
 
@@ -2467,6 +2484,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         declarations: [
             _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
             _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_5__["DashboardComponent"],
+            _components_login_page_login_page_component__WEBPACK_IMPORTED_MODULE_11__["LoginPageComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -2475,7 +2493,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_material_expansion__WEBPACK_IMPORTED_MODULE_7__["MatExpansionModule"],
             _angular_material_button__WEBPACK_IMPORTED_MODULE_8__["MatButtonModule"],
             _angular_material_form_field__WEBPACK_IMPORTED_MODULE_9__["MatFormFieldModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormsModule"]
+            _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormsModule"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_12__["HttpClientModule"]
         ],
         providers: [],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
@@ -2495,7 +2514,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".tree {\n  font-size: 25px;\n}\n\nmat-expansion-panel {\n  width: 37em;\n}\n\n.main {\n  width: 30em;\n}\n\n.panel-selected {\n  background-color: #000000;\n  color: white;\n}\n\n#container {\n  display: flex;\n}\n\n#left {\n  flex: 0 0 45%;\n}\n\n#right {\n  flex: 1;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9kYXNoYm9hcmQvQzpcXERFVlxcZ2hcXGdocGFnZS1lT1NSL3NyY1xcYXBwXFxjb21wb25lbnRzXFxkYXNoYm9hcmRcXGRhc2hib2FyZC5jb21wb25lbnQuc2FzcyIsInNyYy9hcHAvY29tcG9uZW50cy9kYXNoYm9hcmQvZGFzaGJvYXJkLmNvbXBvbmVudC5zYXNzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0MsZUFBQTtBQ0NEOztBREFBO0VBQ0MsV0FBQTtBQ0dEOztBRERBO0VBQ0MsV0FBQTtBQ0lEOztBREZBO0VBQ0MseUJBQUE7RUFDQSxZQUFBO0FDS0Q7O0FESEE7RUFDQyxhQUFBO0FDTUQ7O0FESkE7RUFDQyxhQUFBO0FDT0Q7O0FETEE7RUFDQyxPQUFBO0FDUUQiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2Rhc2hib2FyZC9kYXNoYm9hcmQuY29tcG9uZW50LnNhc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudHJlZVxyXG5cdGZvbnQtc2l6ZTogMjVweFxyXG5tYXQtZXhwYW5zaW9uLXBhbmVsXHJcblx0d2lkdGg6IDM3ZW1cclxuXHJcbi5tYWluXHJcblx0d2lkdGg6IDMwZW1cclxuXHJcbi5wYW5lbC1zZWxlY3RlZFxyXG5cdGJhY2tncm91bmQtY29sb3I6ICMwMDAwMDBcclxuXHRjb2xvcjogd2hpdGVcclxuXHJcbiNjb250YWluZXJcclxuXHRkaXNwbGF5OiBmbGV4XHJcblxyXG4jbGVmdFxyXG5cdGZsZXg6IDAgMCA0NSVcclxuXHJcbiNyaWdodFxyXG5cdGZsZXg6IDFcclxuIiwiLnRyZWUge1xuICBmb250LXNpemU6IDI1cHg7XG59XG5cbm1hdC1leHBhbnNpb24tcGFuZWwge1xuICB3aWR0aDogMzdlbTtcbn1cblxuLm1haW4ge1xuICB3aWR0aDogMzBlbTtcbn1cblxuLnBhbmVsLXNlbGVjdGVkIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzAwMDAwMDtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG4jY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbn1cblxuI2xlZnQge1xuICBmbGV4OiAwIDAgNDUlO1xufVxuXG4jcmlnaHQge1xuICBmbGV4OiAxO1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".tree {\n  font-size: 25px;\n}\n\nmat-expansion-panel {\n  width: 37em;\n}\n\n.main {\n  width: 30em;\n}\n\n.panel-selected {\n  background-color: #000000;\n  color: white;\n}\n\n#container {\n  display: flex;\n}\n\n#left {\n  flex: 0 0 45%;\n}\n\n#right {\n  flex: 1;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9kYXNoYm9hcmQvQzpcXERFVlxcZ2hwYWdlLWVPU1Ivc3JjXFxhcHBcXGNvbXBvbmVudHNcXGRhc2hib2FyZFxcZGFzaGJvYXJkLmNvbXBvbmVudC5zYXNzIiwic3JjL2FwcC9jb21wb25lbnRzL2Rhc2hib2FyZC9kYXNoYm9hcmQuY29tcG9uZW50LnNhc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDQyxlQUFBO0FDQ0Q7O0FEQUE7RUFDQyxXQUFBO0FDR0Q7O0FEREE7RUFDQyxXQUFBO0FDSUQ7O0FERkE7RUFDQyx5QkFBQTtFQUNBLFlBQUE7QUNLRDs7QURIQTtFQUNDLGFBQUE7QUNNRDs7QURKQTtFQUNDLGFBQUE7QUNPRDs7QURMQTtFQUNDLE9BQUE7QUNRRCIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvZGFzaGJvYXJkL2Rhc2hib2FyZC5jb21wb25lbnQuc2FzcyIsInNvdXJjZXNDb250ZW50IjpbIi50cmVlXHJcblx0Zm9udC1zaXplOiAyNXB4XHJcbm1hdC1leHBhbnNpb24tcGFuZWxcclxuXHR3aWR0aDogMzdlbVxyXG5cclxuLm1haW5cclxuXHR3aWR0aDogMzBlbVxyXG5cclxuLnBhbmVsLXNlbGVjdGVkXHJcblx0YmFja2dyb3VuZC1jb2xvcjogIzAwMDAwMFxyXG5cdGNvbG9yOiB3aGl0ZVxyXG5cclxuI2NvbnRhaW5lclxyXG5cdGRpc3BsYXk6IGZsZXhcclxuXHJcbiNsZWZ0XHJcblx0ZmxleDogMCAwIDQ1JVxyXG5cclxuI3JpZ2h0XHJcblx0ZmxleDogMVxyXG4iLCIudHJlZSB7XG4gIGZvbnQtc2l6ZTogMjVweDtcbn1cblxubWF0LWV4cGFuc2lvbi1wYW5lbCB7XG4gIHdpZHRoOiAzN2VtO1xufVxuXG4ubWFpbiB7XG4gIHdpZHRoOiAzMGVtO1xufVxuXG4ucGFuZWwtc2VsZWN0ZWQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDAwMDAwO1xuICBjb2xvcjogd2hpdGU7XG59XG5cbiNjb250YWluZXIge1xuICBkaXNwbGF5OiBmbGV4O1xufVxuXG4jbGVmdCB7XG4gIGZsZXg6IDAgMCA0NSU7XG59XG5cbiNyaWdodCB7XG4gIGZsZXg6IDE7XG59Il19 */");
 
 /***/ }),
 
@@ -2626,11 +2645,11 @@ let DashboardComponent = class DashboardComponent {
             // checkout the master branch
             // await git.checkout({ dir: '/', ref: branch })
             // checkout the master branch
-            yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["checkout"]({ dir: '/', ref: this.curBranch });
+            yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["checkout"]({ dir: '/', ref: branch });
             yield isomorphic_git__WEBPACK_IMPORTED_MODULE_4__["fetch"]({
                 dir: '/',
                 corsProxy: 'https://cors.isomorphic-git.org',
-                ref: this.curBranch,
+                ref: branch,
                 depth: 1,
                 singleBranch: true,
                 tags: false
@@ -2702,9 +2721,6 @@ let DashboardComponent = class DashboardComponent {
             this.loading = false;
         });
     }
-    checkout() {
-        console.log("checkout");
-    }
     newChildBranch() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             let name = this.childBranch;
@@ -2734,6 +2750,95 @@ DashboardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./dashboard.component.sass */ "./src/app/components/dashboard/dashboard.component.sass")).default]
     })
 ], DashboardComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/login-page/login-page.component.sass":
+/*!*****************************************************************!*\
+  !*** ./src/app/components/login-page/login-page.component.sass ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".button {\n  margin-bottom: 18px;\n  margin-left: 30px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9sb2dpbi1wYWdlL0M6XFxERVZcXGdocGFnZS1lT1NSL3NyY1xcYXBwXFxjb21wb25lbnRzXFxsb2dpbi1wYWdlXFxsb2dpbi1wYWdlLmNvbXBvbmVudC5zYXNzIiwic3JjL2FwcC9jb21wb25lbnRzL2xvZ2luLXBhZ2UvbG9naW4tcGFnZS5jb21wb25lbnQuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLG1CQUFBO0VBQ0EsaUJBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbG9naW4tcGFnZS9sb2dpbi1wYWdlLmNvbXBvbmVudC5zYXNzIiwic291cmNlc0NvbnRlbnQiOlsiLmJ1dHRvblxyXG4gICAgbWFyZ2luLWJvdHRvbTogMThweFxyXG4gICAgbWFyZ2luLWxlZnQ6IDMwcHgiLCIuYnV0dG9uIHtcbiAgbWFyZ2luLWJvdHRvbTogMThweDtcbiAgbWFyZ2luLWxlZnQ6IDMwcHg7XG59Il19 */");
+
+/***/ }),
+
+/***/ "./src/app/components/login-page/login-page.component.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/components/login-page/login-page.component.ts ***!
+  \***************************************************************/
+/*! exports provided: LoginPageComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageComponent", function() { return LoginPageComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var app_services_encryption_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! app/services/encryption.service */ "./src/app/services/encryption.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+
+
+
+
+let LoginPageComponent = class LoginPageComponent {
+    constructor(encryptionService, http) {
+        this.encryptionService = encryptionService;
+        this.http = http;
+        this.publicKey = "";
+        this.proceed = false;
+        this.admin = false;
+    }
+    ngOnInit() {
+        // this.send()
+    }
+    send() {
+        // this.http.post('http://localhost:3000/api/message', "hello").toPromise()
+    }
+    selectStudent() {
+        this.proceed = true;
+    }
+    register() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const keys = this.encryptionService.generateKeys();
+            this.show(`New public key credential generated: <br> ${keys.publicKey} <br>    private key: ${keys.secretKey}`);
+            // navigator.credentials.store({id: "mock", type: "test"})
+            // navigator.credentials()
+            // console.log(cred.id)
+        });
+    }
+    // const login = async () => {
+    //   const cred = await navigator.credentials.get({ password: true })
+    //   if (!cred) {
+    //     return show('No credentials in store.')
+    //   }
+    //   console.log(cred)
+    //   show(`You are now logged in as ${cred.id}.`)
+    // }
+    login() {
+        console.log(this.publicKey);
+        console.log();
+    }
+    show(msg) {
+        document.getElementById('welcome-text').innerHTML = msg;
+    }
+};
+LoginPageComponent.ctorParameters = () => [
+    { type: app_services_encryption_service__WEBPACK_IMPORTED_MODULE_2__["EncryptionService"] },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }
+];
+LoginPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-login-page',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./login-page.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/login-page/login-page.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./login-page.component.sass */ "./src/app/components/login-page/login-page.component.sass")).default]
+    })
+], LoginPageComponent);
 
 
 
@@ -2930,17 +3035,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var isomorphic_git__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! isomorphic-git */ "./node_modules/isomorphic-git/dist/for-future/isomorphic-git/index.js");
-/* harmony import */ var _isomorphic_git_lightning_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @isomorphic-git/lightning-fs */ "./node_modules/@isomorphic-git/lightning-fs/src/index.js");
-/* harmony import */ var _isomorphic_git_lightning_fs__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_isomorphic_git_lightning_fs__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _encryption_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./encryption.service */ "./src/app/services/encryption.service.ts");
+/* harmony import */ var _encryption_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./encryption.service */ "./src/app/services/encryption.service.ts");
 
 
 // import * as browserfs from 'browserfs';
 
+const FS = __webpack_require__(/*! @isomorphic-git/lightning-fs */ "./node_modules/@isomorphic-git/lightning-fs/src/index.js");
 const browserfs = __webpack_require__(/*! browserfs */ "./node_modules/browserfs/dist/browserfs.js");
+// import FS from '@isomorphic-git/lightning-fs';
 
-
-const fs = new _isomorphic_git_lightning_fs__WEBPACK_IMPORTED_MODULE_3___default.a("/");
+const fs = new FS("/");
 // const fs = browserfs.BFSRequire("fs")
 let IsomorhicGitService = 
 /** IsmorphicGitService.build() to instantiate service.*/
@@ -3114,7 +3218,7 @@ class IsomorhicGitService {
     }
 };
 IsomorhicGitService.ctorParameters = () => [
-    { type: _encryption_service__WEBPACK_IMPORTED_MODULE_4__["EncryptionService"] }
+    { type: _encryption_service__WEBPACK_IMPORTED_MODULE_3__["EncryptionService"] }
 ];
 IsomorhicGitService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -3313,7 +3417,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\DEV\gh\ghpage-eOSR\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\DEV\ghpage-eOSR\src\main.ts */"./src/main.ts");
 
 
 /***/ }),
