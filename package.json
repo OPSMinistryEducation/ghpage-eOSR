@@ -24,7 +24,7 @@
     "@isomorphic-git/lightning-fs": "^3.3.2",
     "bootstrap": "^4.3.1",
     "browserfs": "^1.4.3",
-    "isomorphic-git": "^0.67.2",
+    "isomorphic-git": "^1.8.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "tweetnacl": "^1.0.1",
